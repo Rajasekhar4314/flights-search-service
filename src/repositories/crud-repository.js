@@ -1,5 +1,7 @@
 
+const { StatusCodes } = require("http-status-codes")
 const { Logger} = require("../config/index")
+const { AppError } = require("../utils/errors/app-error")
 
 class CrudRepository{
 
@@ -18,11 +20,17 @@ class CrudRepository{
                 id : data
             }
         })
+        if(!response){
+            throw new AppError("No record is present", StatusCodes.NOT_FOUND)
+        }
         return response
     }
 
     async get(data){
-        const response = await this.model.findByPK(data)
+        const response = await this.model.findByPk(data)
+        if(!response){
+            throw new AppError("No record is present", StatusCodes.NOT_FOUND)
+        }
         return response
     }
 
@@ -31,12 +39,15 @@ class CrudRepository{
         return response
     }
 
-    async update(data){  // data -> {key : value, ...}
+    async update(data){  // data -> { key : value, ...}
         const response = await this.model.update(data, {
             where: {
-                id : id
+                id : data.id
             }
         })
+        if(!response[0]){
+            throw new AppError("No record is present", StatusCodes.NOT_FOUND)
+        }
         return response
     }
 }

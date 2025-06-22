@@ -12,5 +12,14 @@ router.post("/", AirplaneMiddlewares.validateCreateRequest, AirplaneController.c
 //  /api/v1/airplanes GET
 router.get("/", AirplaneController.getAirplanes) 
 
+//  /api/v1/airplanes/:id  GET
+router.get("/:id", AirplaneController.getAirplane) 
+
+//  /api/v1/airplanes/:id  POST
+router.delete("/:id", AirplaneController.destroyAirplane) 
+
+//  /api/v1/airplanes/  PATCH
+router.patch("/", AirplaneController.updateAirplane) 
+
 
 module.exports = router;
