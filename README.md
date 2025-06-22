@@ -92,3 +92,9 @@ npx sequelize db:migrate
 ```
 npx sequelize db:migrate:undo
 ```
+
+### Seed commands
+
+```
+npx sequelize db:migrate
+```

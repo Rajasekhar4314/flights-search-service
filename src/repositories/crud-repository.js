@@ -13,51 +13,31 @@ class CrudRepository{
     }
 
     async destroy(data){
-        try{
-            const response = await this.model.destroy({
-                where : {
-                    id : data
-                }
-            })
-            return response
-        } catch(error){
-            Logger("Error occured at deleting record :", error)
-            throw error
-        }
+        const response = await this.model.destroy({
+            where : {
+                id : data
+            }
+        })
+        return response
     }
 
     async get(data){
-        try{
-            const response = await this.model.findByPK(data)
-            return response
-        } catch(error){
-            Logger("Error occured at getting single record :", error)
-            throw error
-        }
+        const response = await this.model.findByPK(data)
+        return response
     }
 
      async getAll(){
-        try{
-            const response = await this.model.findAll()
-            return response
-        } catch(error){
-            Logger("Error occured at getting all records :", error)
-            throw error
-        }
+        const response = await this.model.findAll()
+        return response
     }
 
     async update(data){  // data -> {key : value, ...}
-        try{
-            const response = await this.model.update(data, {
-                where: {
-                    id : id
-                }
-            })
-            return response
-        } catch(error){
-            Logger("Error occured at getting all records :", error)
-            throw error
-        }
+        const response = await this.model.update(data, {
+            where: {
+                id : id
+            }
+        })
+        return response
     }
 }
 

@@ -1,0 +1,4 @@
+node_modules
+.env
+airline.log
+src/config/config.json

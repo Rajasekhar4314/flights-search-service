@@ -1,5 +1,4 @@
 'use strict';
-const { Op, or } = require("sequelize")
 
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
@@ -13,20 +12,19 @@ module.exports = {
      *   isBetaMember: false
      * }], {});
     */
-   await queryInterface.bulkInsert("Airplanes", [
-    {
-      modelNumber : "airbus180",
-      capacity: 400,
-      createdAt : new Date(),
-      updatedAt : new Date()
-    },
-    {
-      modelNumber : "airbus182",
-      capacity: 350,
-      createdAt : new Date(),
-      updatedAt : new Date()
-    }
-   ])
+
+    await queryInterface.bulkInsert('airplanes', [
+      { modelNumber : "airbus 125", 
+        capacity : 200,
+        createdAt : new Date(),
+        updatedAt: new Date()
+      },
+      { modelNumber : "airbus 126", 
+        capacity : 220,
+        createdAt : new Date(),
+        updatedAt: new Date()
+      }
+    ])
   },
 
   async down (queryInterface, Sequelize) {
@@ -36,6 +34,5 @@ module.exports = {
      * Example:
      * await queryInterface.bulkDelete('People', null, {});
      */
-    await queryInterface.bulkDelete("Airplanes", {[Op.or] : [{modelNumber : "airbus180"}, {modelNumber : "airbus182"}]})
   }
 };
