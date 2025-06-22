@@ -81,7 +81,7 @@ npx sequelize db:create
 npx sequelize model:generate --name Airplane --attributes modelNumber:string,capacity:integer
 ```
 
-- Do Migrate, it will create tables in Database
+- Do Migrate, it will create all model tables in Database
 
 ```
 npx sequelize db:migrate
