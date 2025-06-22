@@ -9,7 +9,8 @@ const { AirplaneMiddlewares } = require("../../middlewares/index")
 //  /api/v1/airplanes POST
 router.post("/", AirplaneMiddlewares.validateCreateRequest, AirplaneController.createAirplane)
 
-router.get("/", AirplaneController.getAllAirplanes)
+//  /api/v1/airplanes GET
+router.get("/", AirplaneController.getAirplanes) 
 
 
 module.exports = router;

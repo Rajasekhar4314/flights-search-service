@@ -2,6 +2,7 @@
 const { StatusCodes } = require("http-status-codes");
 const { AirplaneRepository } = require("../repositories/index");
 const { AppError } = require("../utils/errors/app-error");
+const { Console } = require("winston/lib/winston/transports");
 
 const airplaneRepository = new AirplaneRepository();
 
@@ -23,16 +24,17 @@ async function createAirplane(data) {
     }
 }
 
-async function getAllAirplanes() {
+async function getAirplanes() {
     try {
         const airplanes = await airplaneRepository.getAll();
         return airplanes;
     } catch (error) {
-        throw new AppError("can't get all airplanes record", StatusCodes.INTERNAL_SERVER_ERROR)    
+        Console.log("serice :", error)
+        throw new AppError("can't fetch all airplane recordS", StatusCodes.INTERNAL_SERVER_ERROR)    
     }
 }
 
-async function getAirplanes(data) {
+async function getAirplane(data) {
     try {
         const airplane = await airplaneRepository.get(data)
         return airplane;
@@ -43,5 +45,7 @@ async function getAirplanes(data) {
 }
 
 module.exports = {
-    createAirplane
+    createAirplane,
+    getAirplanes,
+    getAirplane
 }
