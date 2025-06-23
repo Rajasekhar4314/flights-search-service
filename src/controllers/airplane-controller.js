@@ -65,8 +65,8 @@ async function getAirplane(req, res) {
 }
 
 /**
- * GET : /airplane/
- * req-body : {id : 1}
+ * DELETE : /airplane/:id
+ * req-body : {}
  */
 async function destroyAirplane(req, res) {
     try {        
