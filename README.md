@@ -98,3 +98,9 @@ npx sequelize db:migrate:undo
 ```
 npx sequelize db:migrate
 ```
+
+## To set a foreignKey constraint, create a new migration instead of model.
+
+```
+npx sequelize migration:generate --name update-city-airport-association
+```
