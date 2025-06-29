@@ -95,8 +95,22 @@ npx sequelize db:migrate:undo
 
 ### Seed commands
 
+- To create a seed file
+
 ```
-npx sequelize db:migrate
+npx sequelize seed:generate --name add-seats
+```
+
+- To Run a Specific seed file, <file-name>
+
+```
+npx sequelize db:seed --seed <20250627132114-add-seats.js>
+```
+
+- To Run all the seed files.
+
+```
+npx sequelize db:seed:all
 ```
 
 ## To set a foreignKey constraint, create a new migration instead of model.
