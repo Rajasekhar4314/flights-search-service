@@ -3,6 +3,7 @@ const { StatusCodes } = require("http-status-codes")
 const { FlightService } = require("../services/index")
 const { ErrorResponse, SuccessResponse } = require("../utils/common/index");
 const { AppError } = require("../utils");
+const flight = require("../models/flight");
 
 /**
  * POST : /airplanes
@@ -81,8 +82,32 @@ async function getFlight(req, res) {
     }
 }
 
+/**
+ * GET : /flights/:id
+ * req-body : {}
+ */
+async function updateSeats(req, res) {
+    try {
+        const flight = await FlightService.updateSeats({
+            flightId: req.params.id,
+            seats: req.body.seats,
+            dec: req.body.dec
+        });
+        SuccessResponse.data = flight
+        return res.status(StatusCodes.OK)
+            .json(SuccessResponse)
+
+    } catch (error) {
+        ErrorResponse.error = error;
+        return res
+            .status(error.statusCode)
+            .json(ErrorResponse)
+    }
+}
+
 module.exports = {
     createFlight,
     getAllFlights,
     getFlight,
+    updateSeats
 }
